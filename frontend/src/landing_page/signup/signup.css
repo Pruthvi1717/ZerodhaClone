@@ -1,0 +1,162 @@
+/* Full page centering */
+.signup-page {
+  min-height: calc(100vh - 120px); /* Space for navbar + footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: #f5f7fa;
+}
+
+/* Card Container */
+.signup-card {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 40px 35px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Header */
+.signup-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.signup-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 5px;
+}
+
+.signup-header p {
+  font-size: 14px;
+  color: #4a5568;
+}
+
+/* Form Group */
+.signup-form .form-group {
+  margin-bottom: 18px;
+}
+
+.signup-form label {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Inputs */
+.signup-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  color: #1f2937;
+  background: #f9fafb;
+}
+
+.signup-form input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  background: #ffffff;
+}
+
+/* Button */
+.signup-btn {
+  width: 100%;
+  padding: 14px 0;
+  background: #2563eb;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.signup-btn:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+
+/* Footer text */
+.signup-footer-text {
+  margin-top: 20px;
+  text-align: center;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.signup-footer-text a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-footer-text a:hover {
+  text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* TOP INLINE ALERT THAT PUSHES PAGE DOWN */
+.signup-alert {
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 16px;
+  padding: 16px 16px;
+  margin-top: 25px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Success style */
+.signup-alert.success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+/* Error style */
+.signup-alert.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Make signup page stack vertically so alert pushes card down */
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 120px); /* your navbar + footer area */
+  padding-top: 50px;
+}

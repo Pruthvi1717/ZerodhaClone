@@ -1,0 +1,17 @@
+body{
+    margin:0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+.nav-link{
+    margin-left:40px;
+    
+}
+footer ul li a {
+  color: #0d6efd; /* Bootstrap primary blue on hover */
+}
+footer h6 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}

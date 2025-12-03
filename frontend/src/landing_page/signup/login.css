@@ -1,0 +1,159 @@
+/* Full page centering */
+.login-page {
+  min-height: calc(100vh - 120px); /* space for navbar + footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: #f5f7fa;
+}
+
+/* Card Container */
+.login-card {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 40px 35px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Header */
+.login-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.login-header h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 5px;
+}
+
+.login-header p {
+  font-size: 14px;
+  color: #4a5568;
+}
+
+/* Form Group */
+.login-form .form-group {
+  margin-bottom: 18px;
+}
+
+.login-form label {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Inputs */
+.login-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  color: #1f2937;
+  background: #f9fafb;
+}
+
+.login-form input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  background: #ffffff;
+}
+
+/* Button */
+.login-btn {
+  width: 100%;
+  padding: 14px 0;
+  background: #2563eb;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+
+/* Footer text */
+.login-footer-text {
+  margin-top: 20px;
+  text-align: center;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.login-footer-text a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-footer-text a:hover {
+  text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* TOP INLINE ALERT THAT PUSHES PAGE DOWN (same as signup) */
+.login-alert {
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 16px;
+  padding: 16px 16px;
+  margin-top: 25px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.login-alert.success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.login-alert.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Make login page vertical so alert pushes card down */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  padding-top: 50px;
+}

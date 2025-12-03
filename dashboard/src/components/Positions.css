@@ -1,0 +1,55 @@
+.positions-container {
+  margin: 40px;
+}
+
+.positions-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.order-table {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  overflow: hidden;
+}
+
+.positions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.positions-table thead tr {
+  background: #fafafa;
+  border-bottom: 1px solid #e6e6e6;
+  text-align: left;
+}
+
+.positions-table th {
+  padding: 12px 16px;
+  font-weight: 500;
+  color: #555;
+}
+
+.positions-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.positions-table tr:hover {
+  background: #f9f9f9;
+}
+
+.profit {
+  color: #0f9d58;
+  font-weight: 500;
+}
+
+.loss {
+  color: #d93025;
+  font-weight: 500;
+}

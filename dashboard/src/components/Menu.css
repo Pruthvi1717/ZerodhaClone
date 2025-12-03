@@ -1,0 +1,55 @@
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px 5px;
+}
+
+.avatar {
+  background: #4c6ef5;
+  color: white;
+  width: 36px;
+  height: 36px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.username {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.dropdown {
+  background: white;
+  position: absolute;
+  right: 20px;
+  top: 80px;
+  width: 180px;
+  padding: 10px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  z-index: 1000;
+}
+
+.dropdown p {
+  padding: 10px;
+  margin: 0;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.dropdown p:hover {
+  background: #f1f5f9;
+}
+
+.logout {
+  color: #e63946;
+  font-weight: 600;
+}
