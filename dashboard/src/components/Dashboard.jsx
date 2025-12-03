@@ -8,12 +8,11 @@ import Orders from "./Orders";
 import Positions from "./Positions";
 import Summary from "./Summary";
 import WatchList from "./WatchList";
-import VerticalGraph from "./VerticalGraph";
-
 import { GeneralContextProvider } from "./GeneralContext";
 
 const Dashboard = () => {
-  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
   // -------------------- CHECK LOGIN --------------------
@@ -23,16 +22,25 @@ const Dashboard = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (!data.loggedIn) {
-          navigate("http://localhost:5174/login"); // redirect to frontend login
+        console.log("AUTH CHECK:", data);
+
+        if (data.loggedIn) {
+          setUsername(data.user.fullName);
         } else {
-          setUser(data.user.fullName);
+          // ⭐ CORRECT REDIRECT FOR RENDER SPA
+          window.location.href = "https://stoxlyfront.onrender.com/login";
         }
+
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("AUTH ERROR:", err);
+        window.location.href = "https://stoxlyfront.onrender.com/login";
       });
   }, []);
 
-  // Loading state (before auth check finishes)
-  if (user === null) {
+  // -------------------- LOADING UI --------------------
+  if (loading) {
     return (
       <div className="loading-screen">
         <h2>Loading dashboard...</h2>
@@ -40,14 +48,11 @@ const Dashboard = () => {
     );
   }
 
- 
-
-  // -------------------- DASHBOARD UI --------------------
+  // -------------------- DASHBOARD MAIN UI --------------------
   return (
     <div className="dashboard-container">
       <GeneralContextProvider>
-
-        <WatchList />
+        <WatchList username={username} />
 
         <div className="content">
           <Routes>
@@ -57,7 +62,6 @@ const Dashboard = () => {
             <Route path="/positions" element={<Positions />} />
             <Route path="/funds" element={<Funds />} />
             <Route path="/apps" element={<Apps />} />
-            
           </Routes>
         </div>
       </GeneralContextProvider>
