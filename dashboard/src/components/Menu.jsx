@@ -41,7 +41,7 @@ const Menu = () => {
     const data = await res.json();
     console.log("logout:", data);
 
-    window.location.href = "http://localhost:5174/login";
+    window.location.href = "https://stoxlydashboard.onrender.com/login";
   };
   const menuClass = "menu";
   const activeMenuClass = "menu selected";

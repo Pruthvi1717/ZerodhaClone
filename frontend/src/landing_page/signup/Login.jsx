@@ -37,7 +37,7 @@ export default function Login() {
     if (res.ok) {
       showAlert("success", "Login successful! Redirecting...");
       setTimeout(() => {
-        window.location.href = "http://localhost:5174";  
+        window.location.href = "https://stoxlydashboard.onrender.com/login";  
       }, 1200);
     } else {
       showAlert("error", data.msg);
