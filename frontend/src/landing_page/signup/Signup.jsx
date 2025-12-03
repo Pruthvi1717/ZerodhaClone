@@ -8,16 +8,14 @@ export default function Signup() {
     password: "",
   });
 
-  const [alertMsg, setAlertMsg] = useState(null); // message
-  const [alertType, setAlertType] = useState(null); // success / error
+  const [alertMsg, setAlertMsg] = useState(null);
+  const [alertType, setAlertType] = useState(null);
 
   const showAlert = (type, msg) => {
     setAlertType(type);
     setAlertMsg(msg);
 
-    setTimeout(() => {
-      setAlertMsg(null);
-    }, 2500);
+    setTimeout(() => setAlertMsg(null), 2500);
   };
 
   const handleChange = (e) =>
@@ -47,12 +45,8 @@ export default function Signup() {
 
   return (
     <div className="signup-page">
-
-      {/* ✨ Inline alert (appears above card) */}
       {alertMsg && (
-        <div className={`signup-alert ${alertType}`}>
-          {alertMsg}
-        </div>
+        <div className={`signup-alert ${alertType}`}>{alertMsg}</div>
       )}
 
       <div className="signup-card">
@@ -98,7 +92,8 @@ export default function Signup() {
         </form>
 
         <p className="signup-footer-text">
-          Already have an account? <a href="https://stoxlyfront.onrender.com/login">Login</a>
+          Already have an account?{" "}
+          <a href="https://stoxlyfront.onrender.com/login">Login</a>
         </p>
       </div>
     </div>

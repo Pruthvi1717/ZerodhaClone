@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Menu.css";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [username, setUsername] = useState("");
-  const navigate = useNavigate();
 
-  
+  // ---------------- CHECK LOGIN ON LOAD ----------------
   useEffect(() => {
     fetch("https://stoxly-sqxa.onrender.com/auth/me", {
       credentials: "include",
@@ -16,33 +15,31 @@ const Menu = () => {
       .then((res) => res.json())
       .then((data) => {
         if (!data.loggedIn) {
-          navigate("https://stoxlyfront.onrender.com/login");
+          window.location.href = "https://stoxlyfront.onrender.com/login";
         } else {
           setUsername(data.user.fullName);
         }
+      })
+      .catch(() => {
+        window.location.href = "https://stoxlyfront.onrender.com/login";
       });
   }, []);
 
-  const handleMenuClick = (index) => {
-    setSelectedMenu(index);
-  };
+  const handleMenuClick = (index) => setSelectedMenu(index);
 
-  const toggleProfileDropdown = () => {
+  const toggleProfileDropdown = () =>
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
-  };
 
   // ---------------- LOGOUT FUNCTION ----------------
   const logoutUser = async () => {
-    const res = await fetch("https://stoxly-sqxa.onrender.com/auth/logout", {
+    await fetch("https://stoxly-sqxa.onrender.com/auth/logout", {
       method: "GET",
       credentials: "include",
     });
 
-    const data = await res.json();
-    console.log("logout:", data);
-
     window.location.href = "https://stoxlyfront.onrender.com/login";
   };
+
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
 
@@ -53,11 +50,7 @@ const Menu = () => {
       <div className="menus">
         <ul>
           <li>
-            <Link
-              style={{ textDecoration: "none", color: "black" }}
-              to="/"
-              onClick={() => handleMenuClick(0)}
-            >
+            <Link to="/" onClick={() => handleMenuClick(0)}>
               <p className={selectedMenu === 0 ? activeMenuClass : menuClass}>
                 Dashboard
               </p>
@@ -65,11 +58,7 @@ const Menu = () => {
           </li>
 
           <li>
-            <Link
-              style={{ textDecoration: "none", color: "black" }}
-              to="/orders"
-              onClick={() => handleMenuClick(1)}
-            >
+            <Link to="/orders" onClick={() => handleMenuClick(1)}>
               <p className={selectedMenu === 1 ? activeMenuClass : menuClass}>
                 Orders
               </p>
@@ -77,11 +66,7 @@ const Menu = () => {
           </li>
 
           <li>
-            <Link
-              style={{ textDecoration: "none", color: "black" }}
-              to="/holdings"
-              onClick={() => handleMenuClick(2)}
-            >
+            <Link to="/holdings" onClick={() => handleMenuClick(2)}>
               <p className={selectedMenu === 2 ? activeMenuClass : menuClass}>
                 Holdings
               </p>
@@ -89,11 +74,7 @@ const Menu = () => {
           </li>
 
           <li>
-            <Link
-              style={{ textDecoration: "none", color: "black" }}
-              to="/positions"
-              onClick={() => handleMenuClick(3)}
-            >
+            <Link to="/positions" onClick={() => handleMenuClick(3)}>
               <p className={selectedMenu === 3 ? activeMenuClass : menuClass}>
                 Positions
               </p>
@@ -101,11 +82,7 @@ const Menu = () => {
           </li>
 
           <li>
-            <Link
-              style={{ textDecoration: "none", color: "black" }}
-              to="/funds"
-              onClick={() => handleMenuClick(4)}
-            >
+            <Link to="/funds" onClick={() => handleMenuClick(4)}>
               <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>
                 Funds
               </p>
@@ -113,11 +90,7 @@ const Menu = () => {
           </li>
 
           <li>
-            <Link
-              style={{ textDecoration: "none", color: "black" }}
-              to="/apps"
-              onClick={() => handleMenuClick(5)}
-            >
+            <Link to="/apps" onClick={() => handleMenuClick(5)}>
               <p className={selectedMenu === 5 ? activeMenuClass : menuClass}>
                 Apps
               </p>
@@ -127,24 +100,21 @@ const Menu = () => {
 
         <hr />
 
-        {/* ---------------- PROFILE SECTION ---------------- */}
+        {/* ---------------- PROFILE ---------------- */}
         <div className="profile" onClick={toggleProfileDropdown}>
           <div className="avatar">{username.substring(0, 2).toUpperCase()}</div>
           <p className="username">{username}</p>
         </div>
 
-        {/* -------- DROPDOWN MENU LIKE ZERODHA -------- */}
+        {/* ---------------- DROPDOWN ---------------- */}
         {isProfileDropdownOpen && (
           <div className="dropdown">
             <p>Profile</p>
             <p>Settings</p>
             <p>Console</p>
             <p>Reports</p>
-            <a href="https://stoxlyfront.onrender.com/login" style={{textDecoration: "none", color: "black"}}><p >Login</p></a>
-            
-            <p className="logout" onClick={logoutUser}>
-              Logout
-            </p>
+
+            <p className="logout" onClick={logoutUser}>Logout</p>
           </div>
         )}
       </div>

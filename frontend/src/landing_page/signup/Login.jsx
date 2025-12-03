@@ -13,10 +13,7 @@ export default function Login() {
   const showAlert = (type, msg) => {
     setAlertType(type);
     setAlertMsg(msg);
-
-    setTimeout(() => {
-      setAlertMsg(null);
-    }, 2500);
+    setTimeout(() => setAlertMsg(null), 2500);
   };
 
   const handleChange = (e) =>
@@ -27,7 +24,7 @@ export default function Login() {
 
     const res = await fetch("https://stoxly-sqxa.onrender.com/auth/login", {
       method: "POST",
-      credentials: "include",
+      credentials: "include", // VERY IMPORTANT
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
@@ -37,7 +34,7 @@ export default function Login() {
     if (res.ok) {
       showAlert("success", "Login successful! Redirecting...");
       setTimeout(() => {
-        window.location.href = "https://stoxlydashboard.onrender.com";  
+        window.location.href = "https://stoxlydashboard.onrender.com";
       }, 1200);
     } else {
       showAlert("error", data.msg);
@@ -46,12 +43,8 @@ export default function Login() {
 
   return (
     <div className="login-page">
-
-      {/* 🔥 Inline alert above card */}
       {alertMsg && (
-        <div className={`login-alert ${alertType}`}>
-          {alertMsg}
-        </div>
+        <div className={`login-alert ${alertType}`}>{alertMsg}</div>
       )}
 
       <div className="login-card">
@@ -61,7 +54,6 @@ export default function Login() {
         </div>
 
         <form className="login-form" onSubmit={handleSubmit}>
-          
           <div className="form-group">
             <label>Email Address</label>
             <input
@@ -82,13 +74,12 @@ export default function Login() {
             />
           </div>
 
-          <button type="submit" className="login-btn">
-            Login
-          </button>
+          <button type="submit" className="login-btn">Login</button>
         </form>
 
         <p className="login-footer-text">
-          Don't have an account? <a href="/signup">Create one</a>
+          Don't have an account?{" "}
+          <a href="https://stoxlyfront.onrender.com/signup">Create one</a>
         </p>
       </div>
     </div>
