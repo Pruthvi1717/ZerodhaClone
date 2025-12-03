@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./menu.css";
+import "./Menu.css";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
@@ -10,13 +10,13 @@ const Menu = () => {
 
   
   useEffect(() => {
-    fetch("http://localhost:8080/auth/me", {
+    fetch("https://stoxly-sqxa.onrender.com/auth/login", {
       credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {
         if (!data.loggedIn) {
-          navigate("http://localhost:5173/login");
+          navigate("https://stoxlyfront.onrender.com/login");
         } else {
           setUsername(data.user.fullName);
         }
@@ -33,7 +33,7 @@ const Menu = () => {
 
   // ---------------- LOGOUT FUNCTION ----------------
   const logoutUser = async () => {
-    const res = await fetch("http://localhost:8080/auth/logout", {
+    const res = await fetch("https://stoxly-sqxa.onrender.com/auth/login", {
       method: "GET",
       credentials: "include",
     });
@@ -140,7 +140,7 @@ const Menu = () => {
             <p>Settings</p>
             <p>Console</p>
             <p>Reports</p>
-            <a href="http://localhost:5173/login" style={{textDecoration: "none", color: "black"}}><p >Login</p></a>
+            <a href="https://stoxlyfront.onrender.com/login" style={{textDecoration: "none", color: "black"}}><p >Login</p></a>
             
             <p className="logout" onClick={logoutUser}>
               Logout
