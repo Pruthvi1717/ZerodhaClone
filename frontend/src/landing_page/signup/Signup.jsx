@@ -26,7 +26,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("https://stoxly-sqxa.onrender.com/auth/login", {
+    const res = await fetch("https://stoxly-sqxa.onrender.com/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -38,7 +38,7 @@ export default function Signup() {
       showAlert("success", "Signup successful! Redirecting to login...");
 
       setTimeout(() => {
-        window.location.href = "/login";
+        window.location.href = "https://stoxlyfront.onrender.com/login";
       }, 1500);
     } else {
       showAlert("error", data.msg);
