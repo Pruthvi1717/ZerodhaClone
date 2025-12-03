@@ -102,7 +102,9 @@ const Menu = () => {
 
         {/* ---------------- PROFILE ---------------- */}
         <div className="profile" onClick={toggleProfileDropdown}>
-          <div className="avatar">{username.substring(0, 2).toUpperCase()}</div>
+          <div className="avatar">
+            {username.substring(0, 2).toUpperCase()}
+          </div>
           <p className="username">{username}</p>
         </div>
 
@@ -114,7 +116,9 @@ const Menu = () => {
             <p>Console</p>
             <p>Reports</p>
 
-            <p className="logout" onClick={logoutUser}>Logout</p>
+            <p className="logout" onClick={logoutUser}>
+              Logout
+            </p>
           </div>
         )}
       </div>
