@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./signup.css";
+import { Link } from "react-router-dom";
 
 export default function Signup() {
   const [form, setForm] = useState({
@@ -92,7 +93,7 @@ export default function Signup() {
 
         <p className="signup-footer-text">
           Already have an account?{" "}
-          <a href="https://stoxlyfront.onrender.com/login">Login</a>
+          <Link to="/login">Login</Link>
         </p>
       </div>
     </div>
