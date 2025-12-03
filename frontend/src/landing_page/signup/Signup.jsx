@@ -14,7 +14,6 @@ export default function Signup() {
   const showAlert = (type, msg) => {
     setAlertType(type);
     setAlertMsg(msg);
-
     setTimeout(() => setAlertMsg(null), 2500);
   };
 

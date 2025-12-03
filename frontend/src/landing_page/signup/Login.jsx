@@ -24,7 +24,7 @@ export default function Login() {
 
     const res = await fetch("https://stoxly-sqxa.onrender.com/auth/login", {
       method: "POST",
-      credentials: "include", // VERY IMPORTANT
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
@@ -74,7 +74,9 @@ export default function Login() {
             />
           </div>
 
-          <button type="submit" className="login-btn">Login</button>
+          <button type="submit" className="login-btn">
+            Login
+          </button>
         </form>
 
         <p className="login-footer-text">
