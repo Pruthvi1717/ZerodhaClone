@@ -13,11 +13,10 @@ const { OrdersModel } = require("./model/OrdersModel");
 const authRoutes = require("./Routes/authRoutes");
 
 const app = express();
-
 const PORT = process.env.PORT || 8080;
 const MONGO_URL = process.env.MONGO_URL;
 
-// ---------- CORS (IMPORTANT for Render) ----------
+// ---------- CORS FIX (Render PROPER setup) ---------- 
 app.use(
   cors({
     origin: [
@@ -28,7 +27,6 @@ app.use(
   })
 );
 
-// ---------- MIDDLEWARE ----------
 app.use(cookieParser());
 app.use(bodyParser.json());
 
@@ -72,4 +70,3 @@ mongoose
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
   .catch((err) => console.log("MongoDB Error:", err));
-

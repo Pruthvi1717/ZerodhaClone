@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./login.css";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [form, setForm] = useState({
@@ -81,7 +82,7 @@ export default function Login() {
 
         <p className="login-footer-text">
           Don't have an account?{" "}
-          <a href="https://stoxlyfront.onrender.com/signup">Create one</a>
+          <Link to="/signup" style={{ color: "#0073e6" }}>Create one</Link>.
         </p>
       </div>
     </div>

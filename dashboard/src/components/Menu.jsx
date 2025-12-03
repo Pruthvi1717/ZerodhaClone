@@ -15,13 +15,14 @@ const Menu = () => {
       .then((res) => res.json())
       .then((data) => {
         if (!data.loggedIn) {
-          window.location.href = "https://stoxlyfront.onrender.com/login";
+          // 🚀 FIXED URL FOR HASH ROUTER
+          window.location.href = "https://stoxlyfront.onrender.com/#/login";
         } else {
           setUsername(data.user.fullName);
         }
       })
       .catch(() => {
-        window.location.href = "https://stoxlyfront.onrender.com/login";
+        window.location.href = "https://stoxlyfront.onrender.com/#/login";
       });
   }, []);
 
@@ -37,7 +38,8 @@ const Menu = () => {
       credentials: "include",
     });
 
-    window.location.href = "https://stoxlyfront.onrender.com/login";
+    // 🚀 FIXED URL FOR HASH ROUTER
+    window.location.href = "https://stoxlyfront.onrender.com/#/login";
   };
 
   const menuClass = "menu";
@@ -103,7 +105,7 @@ const Menu = () => {
         {/* ---------------- PROFILE ---------------- */}
         <div className="profile" onClick={toggleProfileDropdown}>
           <div className="avatar">
-            {username.substring(0, 2).toUpperCase()}
+            {username ? username.substring(0, 2).toUpperCase() : "??"}
           </div>
           <p className="username">{username}</p>
         </div>

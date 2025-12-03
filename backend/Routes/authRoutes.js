@@ -3,8 +3,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { UserModel } = require("../model/UserModel");
 
-// SECRET KEY (use env variable)
-const JWT_SECRET = "SECRET123"; // replace with process.env.JWT_SECRET
+// Use ENV variable for security
+const JWT_SECRET = process.env.JWT_SECRET || "SECRET123";
 
 // ---------------- SIGNUP ----------------
 router.post("/signup", async (req, res) => {
@@ -17,13 +17,8 @@ router.post("/signup", async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const newUser = new UserModel({
-    fullName,
-    email,
-    password: hashedPassword,
-  });
+  await new UserModel({ fullName, email, password: hashedPassword }).save();
 
-  await newUser.save();
   res.json({ msg: "Signup successful" });
 });
 
@@ -43,10 +38,11 @@ router.post("/login", async (req, res) => {
     { expiresIn: "1d" }
   );
 
+  // ⭐ CRITICAL COOKIE FIX FOR RENDER
   res.cookie("token", token, {
     httpOnly: true,
-    secure: true,       // REQUIRED for Render
-    sameSite: "none",   // REQUIRED for cross-site cookies
+    secure: true,      // Required for HTTPS
+    sameSite: "none",  // Required for cross-site cookies
   });
 
   res.json({ msg: "Login successful" });
