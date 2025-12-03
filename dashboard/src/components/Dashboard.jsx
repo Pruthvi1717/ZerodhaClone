@@ -18,7 +18,7 @@ const Dashboard = () => {
 
   // -------------------- CHECK LOGIN --------------------
   useEffect(() => {
-    fetch("http://localhost:8080/auth/me", {
+    fetch("https://stoxly-sqxa.onrender.com/auth/me", {
       credentials: "include",
     })
       .then((res) => res.json())

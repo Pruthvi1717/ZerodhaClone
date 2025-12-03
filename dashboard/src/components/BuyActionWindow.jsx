@@ -11,7 +11,7 @@ const BuyActionWindow = ({ uid }) => {
   const { closeBuyWindow } = useContext(GeneralContext);
 
   const handleBuyClick = () => {
-    axios.post("http://localhost:8080/newOrder", {
+    axios.post("https://stoxly-sqxa.onrender.com/newOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
