@@ -98,7 +98,7 @@ export default function Signup() {
         </form>
 
         <p className="signup-footer-text">
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <a href="https://stoxlyfront.onrender.com/login">Login</a>
         </p>
       </div>
     </div>
