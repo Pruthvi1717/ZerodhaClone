@@ -10,7 +10,7 @@ const Menu = () => {
 
   
   useEffect(() => {
-    fetch("https://stoxly-sqxa.onrender.com/auth/login", {
+    fetch("https://stoxly-sqxa.onrender.com/auth/me", {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -33,7 +33,7 @@ const Menu = () => {
 
   // ---------------- LOGOUT FUNCTION ----------------
   const logoutUser = async () => {
-    const res = await fetch("https://stoxly-sqxa.onrender.com/auth/login", {
+    const res = await fetch("https://stoxly-sqxa.onrender.com/auth/logout", {
       method: "GET",
       credentials: "include",
     });
@@ -41,7 +41,7 @@ const Menu = () => {
     const data = await res.json();
     console.log("logout:", data);
 
-    window.location.href = "https://stoxlydashboard.onrender.com/login";
+    window.location.href = "https://stoxlyfront.onrender.com/login";
   };
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
